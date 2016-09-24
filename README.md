@@ -2,7 +2,7 @@ some utils.
 
 ## Installation
 
-    npm install mix-util
+    npm i mix-util
 
 ## Usage
 
@@ -26,6 +26,7 @@ util.extend // 将源对象的所有属性拷贝到目标对象中
 util.genNonceStr // 获取随机数
 util.setCookie
 util.getCookie
+util.clearCookie
 util.getUrlQuery // 读取url上带的参数
 util.buildUrlQuery // 拼接url参数
 ```

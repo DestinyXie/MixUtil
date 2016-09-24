@@ -270,6 +270,25 @@ function getCookie(name) {
 }
 
 /**
+ * 清空cookie
+ * @param {string=} name cookie名，没有则清空所有cookie
+ */
+function clearCookie(name) {
+    if (name) {
+        document.cookie=name+'=0;expires=' + new Date(0).toUTCString();
+    }
+    else {
+        //删除所有cookies
+        var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+        if (keys) {
+            for (var i = keys.length; i--;) {
+                document.cookie=keys[i]+'=0;expires=' + new Date(0).toUTCString();
+            }
+        }
+    }
+}
+
+/**
  * 读取url上带的参数
  * @param {string=} opt_url url地址
  * @return {string} cookie值
@@ -341,6 +360,7 @@ module.exports = {
     genNonceStr: genNonceStr,
     setCookie: setCookie,
     getCookie: getCookie,
+    clearCookie: clearCookie,
     getUrlQuery: getUrlQuery,
     buildUrlQuery: buildUrlQuery
 };
