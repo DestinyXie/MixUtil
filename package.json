@@ -1,6 +1,6 @@
 {
   "name": "mix-util",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "utils, copyright mix corp.",
   "main": "index.js",
   "scripts": {

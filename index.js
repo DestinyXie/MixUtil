@@ -138,6 +138,44 @@ var browser = {
 
 var _toString = Object.prototype.toString;
 
+// 粗略判断手机型号
+var getDeviceName = function () {
+    var deviceName = 'unknow';
+
+    if (browser.versions.android) {
+        deviceName = 'android';
+    }
+
+    if (browser.versions.iPad) {
+        deviceName = 'ipad';
+    }
+
+    if (browser.versions.iPhone) {
+        deviceName = 'iphone';
+        var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        if (width > 400) {
+            deviceName = "iPhone6 plus";
+        }
+        else if (width > 370) {
+            deviceName = "iphone6";
+        }
+        else if (width > 315) {
+            if (height > 500) {
+                deviceName = "iphone5 or iphone5s";
+            }
+            else {
+                deviceName = "iphone4 or iphone4s";
+            }
+        }
+        else {
+                deviceName = "iphone";
+        }
+    }
+
+    return deviceName;
+};
+
 /**
  * @type {Function}
  * @param {*} object 需要判断的对象
@@ -181,7 +219,6 @@ var getElement = function (object) {
     return object;
 };
 
-
 /**
  * @type {Function}
  * @param {Element} dom 传入的DOM相关的内容
@@ -223,7 +260,6 @@ function extend(target, source, override) {
     }
     return target;
 }
-
 
 /**
  * 生成随机字符串，字符范围：0-9a-zA-Z
@@ -362,5 +398,6 @@ module.exports = {
     getCookie: getCookie,
     clearCookie: clearCookie,
     getUrlQuery: getUrlQuery,
-    buildUrlQuery: buildUrlQuery
+    buildUrlQuery: buildUrlQuery,
+    getDeviceName: getDeviceName
 };
